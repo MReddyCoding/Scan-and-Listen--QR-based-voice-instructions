@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Choose Language for Instructions</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+    .container {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      max-width: 90%;
+      width: 400px;
+    }
+    h1 {
+      color: #333;
+      margin-bottom: 30px;
+      font-size: 24px;
+    }
+    .language-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .language-button {
+      background-color: #ffffff;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 15px 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .language-button:hover {
+      background-color: #f0f7ff;
+      border-color: #0078d7;
+      transform: translateY(-2px);
+    }
+    .language-button:active {
+      transform: translateY(0);
+    }
+    .flag {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+    .audio-player {
+      margin-top: 30px;
+      display: none;
+      width: 100%;
+    }
+    .back-button {
+      margin-top: 20px;
+      background-color: transparent;
+      border: none;
+      color: #0078d7;
+      cursor: pointer;
+      font-size: 14px;
+      display: none;
+    }
+    .back-button:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎧 Select Your Preferred Language</h1>
+    
+    <div id="language-selection">
+      <div class="language-grid">
+        <button class="language-button" onclick="playAudio('./scan and listen/english.mp3.mp3', 'English')">
+          <span class="flag">🇬🇧</span>
+          <span>English</span>
+        </button>
+        <button class="language-button" onclick="playAudio('./scan and listen/hindi.mp3.mp3', 'Hindi')">
+          <span class="flag">🇮🇳</span>
+          <span>Hindi</span>
+        </button>
+        <button class="language-button" onclick="playAudio('./scan and listen/telugu.mp3.mp3', 'Telugu')">
+          <span class="flag">🇮🇳</span>
+          <span>Telugu</span>
+        </button>
+        <button class="language-button" onclick="playAudio('./scan and listen/tamil.mp3.mp3', 'Tamil')">
+          <span class="flag">🇮🇳</span>
+          <span>Tamil</span>
+        </button>
+      </div>
+    </div>
+    
+    <div id="audio-section" class="audio-player">
+      <h2 id="selected-language"></h2>
+      <audio id="audio-player" controls style="width: 100%;">
+        Your browser does not support the audio element.
+      </audio>
+      <button class="back-button" onclick="goBack()">← Back to language selection</button>
+    </div>
+  </div>
+
+  <script>
+    function playAudio(audioFile, language) {
+      // Hide language selection and show audio player
+      document.getElementById('language-selection').style.display = 'none';
+      document.getElementById('audio-section').style.display = 'block';
+      document.getElementById('selected-language').textContent = language + ' Instructions';
+      document.querySelector('.back-button').style.display = 'block';
+      
+      // Set audio source and play
+      const audioPlayer = document.getElementById('audio-player');
+      audioPlayer.src = audioFile;
+      audioPlayer.load();
+      audioPlayer.play().catch(error => {
+        console.error('Error playing audio:', error);
+        alert('Could not play audio. Please check if the file exists.');
+      });
+    }
+    
+    function goBack() {
+      // Stop audio and go back to language selection
+      const audioPlayer = document.getElementById('audio-player');
+      audioPlayer.pause();
+      audioPlayer.currentTime = 0;
+      
+      document.getElementById('language-selection').style.display = 'block';
+      document.getElementById('audio-section').style.display = 'none';
+      document.querySelector('.back-button').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
