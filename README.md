@@ -80,4 +80,5 @@ Add offline support via PWA
 
 Author:
 K Madhura Reddy
+
 Feel free to connect and contribute!
