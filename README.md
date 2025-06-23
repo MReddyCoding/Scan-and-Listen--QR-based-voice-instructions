@@ -44,6 +44,12 @@ Netlify (drag and drop hosting)
 
 Generate a QR code pointing to your hosted index.html
 
+Scan to Visit the Voice Manual Demo:
+Scan the QR code below to access the **live demo** of my Voice Manual project — a simple, user-friendly tool that helps people set up smart devices without reading long manuals.
+
+It’s especially designed to improve **accessibility**, reduce **user frustration**, and create a more **hands-free tech experience** for everyone.
+![qr-code](https://github.com/user-attachments/assets/0bc0a1d5-4044-42f8-8b42-45301a594b74)
+
 Use Cases:
 -> Smart Device Manuals
 
